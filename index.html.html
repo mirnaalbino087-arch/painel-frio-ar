@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Frio Ar - Divulgação</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:#eef6fb;color:#17324d}
+header{background:linear-gradient(135deg,#087ea4,#10a9d1);color:#fff;padding:28px 18px;text-align:center}
+header h1{margin:0 0 8px;font-size:28px} header p{margin:0}
+.container{max-width:850px;margin:22px auto;padding:0 15px}
+.card{background:#fff;border-radius:18px;padding:20px;margin-bottom:18px;box-shadow:0 5px 20px #0001}
+h2{margin-top:0;font-size:21px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}
+button{border:0;border-radius:12px;padding:14px 12px;font-weight:bold;cursor:pointer;background:#0b8db5;color:white;font-size:15px}
+button:hover{filter:brightness(.95)}
+.secondary{background:#e7f3f8;color:#075b76}
+textarea{width:100%;min-height:280px;border:1px solid #c9dce5;border-radius:12px;padding:14px;font-size:15px;line-height:1.5;resize:vertical}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.status{font-size:13px;color:#537080;margin-top:10px}
+a.btn{display:inline-block;text-decoration:none;text-align:center;border-radius:12px;padding:13px 16px;background:#16a85a;color:white;font-weight:bold}
+.small{font-size:13px;color:#5a7180;line-height:1.5}
+</style>
+</head>
+<body>
+<header>
+  <h1>❄️ Frio Ar — Painel de Divulgação</h1>
+  <p>Crie mensagens prontas para WhatsApp, Status e grupos.</p>
+</header>
+
+<div class="container">
+  <div class="card">
+    <h2>1. Escolha o serviço</h2>
+    <div class="grid">
+      <button onclick="gerar('instalacao')">🔧 Instalação</button>
+      <button onclick="gerar('manutencao')">🛠️ Manutenção</button>
+      <button onclick="gerar('limpeza')">🧼 Limpeza</button>
+      <button onclick="gerar('orcamento')">💰 Orçamento</button>
+      <button onclick="gerar('emergencia')">🚨 Emergência</button>
+      <button onclick="gerar('geral')">📢 Divulgação geral</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2. Sua divulgação pronta</h2>
+    <textarea id="msg" placeholder="Clique em um serviço acima para gerar a mensagem..."></textarea>
+    <div class="actions">
+      <button onclick="copiar()">📋 Copiar mensagem</button>
+      <button class="secondary" onclick="gerarAleatoria()">🔄 Nova mensagem</button>
+      <a class="btn" href="https://wa.me/556584168706" target="_blank">📲 Abrir WhatsApp</a>
+    </div>
+    <div id="status" class="status"></div>
+  </div>
+
+  <div class="card">
+    <h2>3. Links da Frio Ar</h2>
+    <p><b>WhatsApp:</b> (65) 98416-8706</p>
+    <p><b>Site:</b> site5.com.br/55947</p>
+    <div class="actions">
+      <a class="btn" href="https://wa.me/556584168706" target="_blank">Falar no WhatsApp</a>
+      <a class="btn" href="https://site5.com.br/55947" target="_blank">Abrir site</a>
+    </div>
+    <p class="small">Importante: este painel prepara e copia as divulgações. Por segurança, ele não publica automaticamente em grupos ou Status do WhatsApp.</p>
+  </div>
+</div>
+
+<script>
+const msgs = {
+instalacao: [
+`❄️ INSTALAÇÃO DE AR-CONDICIONADO\n\nVai instalar seu ar-condicionado? Conte com a FRIO AR! 🔧\n\n✅ Instalação residencial e comercial\n✅ Atendimento profissional\n✅ Solicite seu orçamento\n\n📲 WhatsApp: https://wa.me/556584168706\n🌐 Site: https://site5.com.br/55947\n\n❄️ FRIO AR — CUIDANDO DO SEU CONFORTO!`,
+`🔧 PRECISA INSTALAR SEU AR-CONDICIONADO?\n\nA FRIO AR realiza instalações de ar-condicionado para residências e empresas.\n\n📸 Envie uma foto do local e peça seu orçamento!\n\n📲 (65) 98416-8706\nhttps://wa.me/556584168706`
+],
+manutencao: [
+`🛠️ AR-CONDICIONADO COM PROBLEMA?\n\nNão está gelando? Está vazando? Fazendo barulho?\n\nA FRIO AR trabalha com manutenção e reparos de ar-condicionado. ❄️\n\n📲 Solicite atendimento:\nhttps://wa.me/556584168706\n\n🌐 https://site5.com.br/55947`,
+`🚨 SEU AR-CONDICIONADO PAROU DE FUNCIONAR?\n\nConte com a FRIO AR para manutenção e reparos. 🔧\n\n📲 Fale conosco e explique o problema:\nhttps://wa.me/556584168706`
+],
+limpeza: [
+`🧼 SEU AR-CONDICIONADO ESTÁ PRECISANDO DE LIMPEZA?\n\nA FRIO AR realiza limpeza e higienização de ar-condicionado. ❄️\n\n📲 Peça seu orçamento:\nhttps://wa.me/556584168706\n\n🌐 https://site5.com.br/55947`,
+`❄️ AR-CONDICIONADO LIMPO, AMBIENTE MAIS AGRADÁVEL!\n\nFaça a limpeza e higienização do seu aparelho com a FRIO AR.\n\n📲 Orçamento pelo WhatsApp:\nhttps://wa.me/556584168706`
+],
+orcamento: [
+`💰 QUER UM ORÇAMENTO PARA SEU AR-CONDICIONADO?\n\nA FRIO AR atende com:\n🔧 Instalação\n🛠️ Manutenção\n🧼 Limpeza e higienização\n🔩 Reparo\n\n📲 Envie uma mensagem:\nhttps://wa.me/556584168706\n\n🌐 https://site5.com.br/55947`
+],
+emergencia: [
+`🚨 PRECISA DE ATENDIMENTO PARA SEU AR-CONDICIONADO?\n\nEntre em contato com a FRIO AR e informe o problema e seu bairro.\n\n📲 WhatsApp:\nhttps://wa.me/556584168706\n\n❄️ FRIO AR`
+],
+geral: [
+`❄️ FRIO AR — SERVIÇOS DE AR-CONDICIONADO\n\n🔧 Instalação\n🛠️ Manutenção e reparos\n🧼 Limpeza e higienização\n🏠 Residencial e comercial\n\n💰 Solicite seu orçamento!\n\n📲 WhatsApp: https://wa.me/556584168706\n🌐 Site: https://site5.com.br/55947`
+]
+};
+let atual='geral';
+function gerar(tipo){
+ atual=tipo;
+ const arr=msgs[tipo]||msgs.geral;
+ document.getElementById('msg').value=arr[Math.floor(Math.random()*arr.length)];
+ document.getElementById('status').textContent='Mensagem criada. Clique em “Copiar mensagem” e publique no Status ou no grupo desejado.';
+}
+function gerarAleatoria(){gerar(atual)}
+async function copiar(){
+ const el=document.getElementById('msg');
+ if(!el.value){gerar('geral')}
+ try{
+   await navigator.clipboard.writeText(el.value);
+   document.getElementById('status').textContent='✅ Copiado! Agora cole no Status ou no grupo do WhatsApp.';
+ }catch(e){
+   el.select(); document.execCommand('copy');
+   document.getElementById('status').textContent='✅ Copiado! Agora cole no WhatsApp.';
+ }
+}
+gerar('geral');
+</script>
+</body>
+</html>
